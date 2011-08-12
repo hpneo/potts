@@ -3,4 +3,10 @@
 require 'rake'
 require File.expand_path('../config/application', __FILE__)
 
+module ::Potts
+  class Application
+    include Rake::DSL
+  end
+end
+
 Potts::Application.load_tasks
