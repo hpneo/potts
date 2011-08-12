@@ -1,0 +1,11 @@
+%h3
+  Nueva tarea en #{@category.name}
+- simple_form_for [@category, @task] do |f|
+  %p
+    = f.input :title
+  %p
+    = f.input :comments, :input_html => {:rows => 10, :cols => 35}
+  %p
+    = f.input :status, :collection => Task::STATUS
+  %p
+    = f.submit

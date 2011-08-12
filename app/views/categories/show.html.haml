@@ -1,0 +1,5 @@
+%a{:href => new_category_task_path(@category)} Nueva tarea
+%ul
+  - @category.tasks.each do |task|
+    %li
+      %a{:href => edit_task_path(task)}=task.title
