@@ -13,6 +13,11 @@ class TasksController < ApplicationController
     end
   end
 
+  def update
+    @task = Task.find(params[:id])
+    @task.update_attributes(params[:task])
+  end
+
   def show
     @category = Category.find(params[:category_id])
     @task = Task.find(params[:id])

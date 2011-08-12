@@ -1,0 +1,13 @@
+li.done{
+  background:#9fc7fd;
+}
+li.pending{
+  background:#f4ff8e;
+}
+
+#tasks form{
+  display:inline-block;
+}
+#tasks div, #tasks input{
+  display:inline-block;
+}

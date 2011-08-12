@@ -1,5 +1,8 @@
 %a{:href => new_category_task_path(@category)} Nueva tarea
-%ul
+%ul#tasks
   - @category.tasks.each do |task|
-    %li
-      %a{:href => edit_task_path(task)}=task.title
+    %li{:id => "task_#{task.id}", :class => task.status}
+      %a{:href => category_task_path(task)}=task.title
+      - simple_form_for([@category, task], :remote => true) do |f|
+        = f.input :status, :collection => Task::STATUS, :label => false
+        = f.submit
