@@ -134,11 +134,11 @@ li.pending{
   }
     #body #user_tasks h2{
       float:left;
-      margin:0;
+      color:#155DD5;
     }
     #body #user_tasks select{
       float:right;
-      font-size:1.1em;
+      font-size:1.2em;
     }
 #tasks form{
   display:inline-block;
