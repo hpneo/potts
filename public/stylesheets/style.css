@@ -113,10 +113,33 @@ li.pending{
   #body #tasks{
     font-size:1.2em;
   }
-  #body #tasks a{
-    color:black;
+    #body #tasks li{
+      overflow:hidden;
+    }
+    #body #tasks li a{
+      float:left;
+      color:black;
+    }
+    #body #tasks li small{
+      float:right;
+      color:white;
+      background:#0db96c;
+      font-size:0.7em;
+      padding:1px 3px;
+      border-radius:3px;
+      box-shadow:1px 1px 1px #eee;
+    }
+  #body #user_tasks{
+    overflow:hidden;
   }
-
+    #body #user_tasks h2{
+      float:left;
+      margin:0;
+    }
+    #body #user_tasks select{
+      float:right;
+      font-size:1.1em;
+    }
 #tasks form{
   display:inline-block;
 }

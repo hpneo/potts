@@ -1,9 +1,12 @@
-%h2= @user.email
+#user_tasks
+  %h2= @user.email
+  = select_tag('user_lifetime', options_for_select(@user.lifetime))
 - @categories.each do |category|
   %h3= category.name
   %ul#tasks
     - category.tasks.each do |task|
       %li{:class => task.status}
+        %small= task.created_at.to_date.to_s(:short)
         %a{:href => category_task_path(category, task)}
           = task.title
           (#{Task::STATUS.key(task.status)})

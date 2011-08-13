@@ -8,4 +8,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :categories
+  has_many :tasks, :through => :categories
+
+  def lifetime
+    self.tasks.map{|i| i.created_at.to_date }.uniq.sort
+  end
 end
