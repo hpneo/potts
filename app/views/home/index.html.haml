@@ -1,5 +1,6 @@
 - if current_user
-  %ul
-  - current_user.categories.each do |category|
-    %li
-      %a{:href => category_path(category), :style => "color:#{category.color}"}= category.name
+  %h2 Categorías
+  %ul#categories
+    - current_user.categories.each do |category|
+      %li
+        %a{:href => category_path(category), :style => "color:#{category.color}"}= category.name

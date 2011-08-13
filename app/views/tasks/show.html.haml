@@ -1,5 +1,7 @@
-%h3 #{@category.name} &raquo; #{@task.title}
+%h2 #{@category.name} &raquo; #{@task.title}
 = @task.comments
 %strong Estado:
 - if @task.status==''
   Nuevo
+- else
+  = Task::STATUS.key(@task.status)

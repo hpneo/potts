@@ -1,3 +1,7 @@
 %ul#user_options
   %li
+    %a{:href => user_path(current_user)} Ver perfil
+  %li
     %a#create_category{:href => new_category_path} Nueva categoría
+  %li
+    %a{:href => destroy_user_session_path} Cerrar sesión

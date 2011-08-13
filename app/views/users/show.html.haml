@@ -1,7 +1,9 @@
+%h2= @user.email
 - @categories.each do |category|
-  %h2= category.name
-  %ul
+  %h3= category.name
+  %ul#tasks
     - category.tasks.each do |task|
       %li{:class => task.status}
-        = task.title
-        (#{task.status})
+        %a{:href => category_task_path(category, task)}
+          = task.title
+          (#{Task::STATUS.key(task.status)})

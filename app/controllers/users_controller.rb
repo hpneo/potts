@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def show
-    @categories = User.find(params[:id]).categories
+    @user = User.find(params[:id])
+    @categories = @user.categories
   end
 
 end
