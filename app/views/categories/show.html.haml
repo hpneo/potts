@@ -1,4 +1,6 @@
-%a#create_task{:href => new_category_task_path(@category)} Nueva tarea
+.options
+  %a#create_task{:href => new_category_task_path(@category)} Nueva tarea
+  %a#edit_category{:href => edit_category_path(@category)} Editar
 %ul#tasks
   - @category.tasks.each do |task|
     %li{:id => "task_#{task.id}", :class => task.status}
