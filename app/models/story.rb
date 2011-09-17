@@ -29,12 +29,3 @@ class Story
   end
 
 end
-
-=begin
-class Story < ActiveResource::Base
-
-  self.site = "https://www.pivotaltracker.com/services/v3/projects/:project_id"
-  self.headers['X-TrackerToken'] = '3fa226bc048021e8467040561f403381'
-
-end
-=end

@@ -1,10 +1,11 @@
 .options
   %a.btn.primary.large{:href => new_category_task_path(@category)} Nueva tarea
+  = link_to "Eliminar", category_path(@category), :confirm => 'Are you sure?', :method => :delete, :class => 'btn small error right'
   %a.btn.right{:href => edit_category_path(@category)} Editar
 %ul#tasks
   - @category.tasks.each do |task|
     %li{:id => "task_#{task.id}", :class => task.status}
       %a{:href => category_task_path(@category, task)}=task.title
       - simple_form_for([@category, task], :remote => true, :html => {:class => 'right'}) do |f|
-        = f.input :status, :collection => Task::STATUS, :label => false, :input_html => {:class => 'btn'}
+        = f.input :status, :collection => Task::STATUS, :label => false, :include_blank => false, :input_html => {:class => 'btn'}
         = f.button :submit, :class => 'btn'

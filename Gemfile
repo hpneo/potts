@@ -15,3 +15,5 @@ gem 'jquery-rails'
 gem 'devise'
 
 gem 'heroku'
+
+gem 'inherited_resources'

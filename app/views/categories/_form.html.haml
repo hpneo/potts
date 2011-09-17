@@ -1,10 +1,12 @@
-- simple_form_for @category do |f|
-  %p
-    = f.input :name
-  %p
-    = f.input :color
-    #colorpicker.well.right
-  %p
-    = f.input :project_id, :collection => @projects, :label_method => :name , :value_method => :id
-  %p
-    = f.submit
+- simple_form_for @category, :html => {:class => 'left'} do |f|
+  = f.input :name
+  = f.input :color, :input_html => {:value => '#000'}
+  = f.input :project_id, :collection => @projects, :label_method => :name , :value_method => :id
+  - if params[:action] == 'new'
+    .input
+      %label.full{:for => 'load_from_pivotal'}
+        = check_box_tag :load_from_pivotal
+        Obtener tareas de Pivotal Tracker*
+      %span.help-block *Se crearán todas las tareas creadas en Pivotal Tracker
+  = f.submit
+#colorpicker.well.right

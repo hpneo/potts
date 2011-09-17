@@ -41,9 +41,21 @@ li.pending{
 .right{
   float:right;
 }
+.left{
+  float:left;
+}
+
+.full{
+  width:100%;
+}
 
 #colorpicker{
-  margin-top:-65px;
+}
+
+.input{
+  margin:5px 0;
+  clear:both;
+  overflow:hidden;
 }
 
 #header, #body{
