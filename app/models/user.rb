@@ -13,4 +13,9 @@ class User < ActiveRecord::Base
   def lifetime
     self.tasks.map{|i| i.created_at.to_date }.uniq.sort
   end
+
+  def to_param
+    "#{id}-#{email.parameterize}"
+  end
+
 end

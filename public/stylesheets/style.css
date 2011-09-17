@@ -18,6 +18,7 @@
 }
 
 body{
+  margin-top:10px;
   font-family:'Actor';
 }
 a{
@@ -37,6 +38,14 @@ li.pending{
   background:#ffef99;
 }
 
+.right{
+  float:right;
+}
+
+#colorpicker{
+  margin-top:-65px;
+}
+
 #header, #body{
   width:900px;
   margin:0 auto;
@@ -50,15 +59,8 @@ li.pending{
     #header h1 a{
       color:#ff4747;
     }
-  #header ul, #header #sign_in{
+  #header ul, #header .new_user{
     float:right;
-  }
-  #header #sign_in{
-    display:block;
-    padding:6px 12px;
-    color:white;
-    background:#13940e;
-    border-radius:5px;
   }
   #header ul{
     list-style:none;

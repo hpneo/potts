@@ -1,0 +1,10 @@
+- simple_form_for @category do |f|
+  %p
+    = f.input :name
+  %p
+    = f.input :color
+    #colorpicker.well.right
+  %p
+    = f.input :project_id, :collection => @projects, :label_method => :name , :value_method => :id
+  %p
+    = f.submit
