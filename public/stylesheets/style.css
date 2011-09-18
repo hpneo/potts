@@ -84,6 +84,9 @@ label{
     #header h1 a{
       color:#ff4747;
     }
+      #header h1 a img{
+        width:100px;
+      }
   #header ul, #header .new_user{
     float:right;
   }
