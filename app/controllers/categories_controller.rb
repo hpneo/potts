@@ -10,32 +10,31 @@ class CategoriesController < InheritedResources::Base
 
   def new
     @projects = Project.all
-    @category = Category.new(:user_id => current_user.id)
+    @category = Category.new
+    @category.users.build
+    new!
   end
 
   def edit
-    @projects = Project.all
+    #@projects = Project.all
     @category = Category.find(params[:id])
+    @category.users.build
+    edit!
   end
 
   def create
-    @category = Category.new(params[:category])
-    @category.user_id = current_user.id
-    @category.save
-    if params[:load_from_pivotal]
-      if @category.project_id
-        @category.project.stories.each do |story|
-          Task.create({
-            :category_id => @category.id,
-            :title => story.name.to_s.force_encoding("UTF-8"),
-            :status => story.current_state.to_s,
-            :story_id => story.id.to_s,
-            :story_type => story.story_type.to_s
-          })
-        end
+    users = params[:category][:users_attributes]
+    params[:category][:users_attributes] = []
+    create!{
+      current_user.categories << @category
+
+      users.each do |index, user|
+        @category.users << User.find(user[:id])
       end
-    end
-    redirect_to category_path(@category)
+
+      @category.load_stories if params[:load_from_pivotal]
+      category_path(@category)
+    }
   end
 
   def update

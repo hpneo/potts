@@ -1,4 +1,7 @@
-%h2 #{@category.name} &raquo; #{@task.title}
+%h2
+  %a{:href => category_path(@category)}
+    =@category.name
+  &raquo; #{@task.title}
 = @task.comments
 %strong Estado:
 - if @task.status==''

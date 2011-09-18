@@ -2,7 +2,7 @@
 %html
   %head
     %title Potts
-    = stylesheet_link_tag 'http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css'
+    = stylesheet_link_tag 'bootstrap'
     = stylesheet_link_tag :all
     = stylesheet_link_tag 'farbtastic'
     = javascript_include_tag 'jquery.min'
@@ -17,7 +17,7 @@
       - unless user_signed_in?
         .new_user
           %a.btn.large.success{:href => sign_in_path} Iniciar sesión
-          %a.btn.small{:href => new_user_session_path} Registrarse
+          %a.btn.small{:href => new_user_registration_path} Registrarse
       - else
         = render :partial => 'layouts/user_options'
     #body

@@ -8,5 +8,11 @@
         = check_box_tag :load_from_pivotal
         Obtener tareas de Pivotal Tracker*
       %span.help-block *Se crearán todas las tareas creadas en Pivotal Tracker
+  %a.btn.small.right#add_user{:href => '#'} añadir
+  .left#user_list
+    = f.fields_for :users, @category.users do |user_form|
+      = user_form.input :id do
+        = user_form.select :id, User.where("id != ?", current_user.id).all.map{ |u| [u.email, u.id] }, :include_blank => false
+        %a.btn.small.right.remove_user{:href => '#', :style => 'display:none'} quitar
   = f.submit
 #colorpicker.well.right

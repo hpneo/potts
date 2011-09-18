@@ -28,4 +28,13 @@ class Story
     parse(client.get)
   end
 
+  def self.create(options)
+    client = RestClient::Resource.new("https://www.pivotaltracker.com/services/v3/projects/#{options[:project_id]}/stories", :headers => {'X-TrackerToken' => '3fa226bc048021e8467040561f403381', 'Content-Type' => 'application/xml'})
+    body = ""
+    options.each { |key, value|
+      body << "<#{key}>#{value}</#{key}>"
+    }
+    parse(client.post "<story>#{body}</story>")
+  end
+
 end

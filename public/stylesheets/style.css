@@ -58,6 +58,19 @@ li.pending{
   overflow:hidden;
 }
 
+a.pivotal{
+  font-size:0.9em;
+  line-height:37px;
+}
+
+label{
+  padding-right:5px;
+}
+
+#user_list select{
+  float:left;
+}
+
 #header, #body{
   width:900px;
   margin:0 auto;
