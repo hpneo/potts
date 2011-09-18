@@ -34,7 +34,8 @@ class Story
     options.each { |key, value|
       body << "<#{key}>#{value}</#{key}>"
     }
-    parse(client.post "<story>#{body}</story>")
+    response = client.post "<story>#{body}</story>"
+    parse(response)
   end
 
 end

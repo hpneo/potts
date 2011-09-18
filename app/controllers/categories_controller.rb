@@ -28,8 +28,10 @@ class CategoriesController < InheritedResources::Base
     create!{
       current_user.categories << @category
 
-      users.each do |index, user|
-        @category.users << User.find(user[:id])
+      if users
+        users.each do |index, user|
+          @category.users << User.find(user[:id])
+        end
       end
 
       @category.load_stories if params[:load_from_pivotal]

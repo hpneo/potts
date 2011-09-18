@@ -9,6 +9,7 @@ class TasksController < ApplicationController
     @task = Task.new(params[:task])
     @task.category_id = params[:category_id]
     if @task.save
+      @task.post_to_pivotal
       redirect_to category_task_path(params[:category_id], @task)
     end
   end
