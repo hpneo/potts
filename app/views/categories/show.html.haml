@@ -4,6 +4,7 @@
   %a.btn.right{:href => edit_category_path(@category)} Editar
 .row
   .span11
+    .header
     %ul#tasks
       - @category.tasks.each do |task|
         %li{:id => "task_#{task.id}", :class => task.status}
