@@ -2,11 +2,15 @@
   %h2= @user.email
   = select_tag('user_lifetime', options_for_select(@user.lifetime))
 - @categories.each do |category|
-  %h3= category.name
-  %ul#tasks
+  .wrapper
+    %h3.left= category.name
+    %ul.scopes.right{:id => "scope_for_#{category.id}"}
+      - Task::STATUS.each do |key, value|
+        %li.checked.label{:class => status_label(value), :id => value}= key
+  %ul.tasks{:id => "tasks_#{category.id}"}
     - category.tasks.each do |task|
       %li{:class => task.status}
+        %span.label{:class => status_label(task.status)}= Task::STATUS.key(task.status)
         %small= task.created_at.to_date.to_s(:short)
         %a{:href => category_task_path(category, task)}
           = task.title
-          (#{Task::STATUS.key(task.status)})

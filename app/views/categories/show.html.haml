@@ -5,7 +5,7 @@
 .row
   .span11
     .header
-    %ul#tasks
+    %ul.tasks
       - @category.tasks.each do |task|
         %li{:id => "task_#{task.id}", :class => task.status}
           %a{:href => category_task_path(@category, task)}=task.title
@@ -17,6 +17,7 @@
               = f.button :submit, 'Actualizar', :class => 'btn'
   .span4
     %h3 Usuarios en este proyecto
-    - @category.users.each do |user|
-      %li
-        %a{:href => user_path(user)}= user.email
+    %ul.unstyled
+      - @category.users.each do |user|
+        %li
+          %a{:href => user_path(user)}= user.email

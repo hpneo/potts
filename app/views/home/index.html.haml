@@ -4,3 +4,7 @@
     - current_user.categories.each do |category|
       %li
         %a{:href => category_path(category), :style => "color:#{category.color}"}= category.name
+- else
+  .message.well
+    %h2 Hola! Aquí podrás hacer seguimiento a las tareas de tus proyectos.
+    %img.center{:src => 'http://media.comicvine.com/uploads/1/15776/1508379-pepper_large.jpg'}

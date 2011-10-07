@@ -28,4 +28,17 @@ $(document).ready(function(){
     e.preventDefault();
     $(this).parent().remove();
   });
+
+  $('ul.scopes li').click(function(){
+    var parent_id = $(this).parent().attr('id').replace('scope_for_', '');
+    var id = $(this).attr('id');
+    
+    $(this).toggleClass('checked');
+    if($(this).hasClass('checked')){
+      $('#tasks_'+parent_id+' li.'+id).fadeIn();
+    }
+    else{
+      $('#tasks_'+parent_id+' li.'+id).fadeOut();
+    }
+  });
 });

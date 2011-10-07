@@ -6,5 +6,5 @@ class Project < ActiveResource::Base
   def stories
     Story.where(:project_id => self.id)
   end
-
+  
 end
