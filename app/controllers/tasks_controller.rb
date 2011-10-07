@@ -14,11 +14,23 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+    @category = Category.find(params[:category_id])
+    @task = Task.find(params[:id])
+  end
+
   def update
     @task = Task.find(params[:id])
     @task.update_attributes(params[:task])
-    story = Story.find(@task.story_id)
-    story.update_attributes(:name => self.title, :project_id => self.category.project_id, :description => self.comments, :current_state => self.status)
+    unless @task.story_id.to_s.empty?
+      story = Story.find(@task.story_id)
+      story.update_attributes(:name => @task.title, :project_id => @task.category.project_id, :description => @task.comments, :current_state => @task.status)
+    end
+
+    respond_to{ |format|
+      format.html { redirect_to category_task_path(@task.category, @task) }
+      format.js
+    }
   end
 
   def show
@@ -29,8 +41,10 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    story = Story.find(@task.story_id)
-    story.destroy(:project_id => self.category.project_id)
+    unless @task.story_id.to_s.empty?
+      story = Story.find(@task.story_id)
+      story.destroy(:project_id => @task.category.project_id)
+    end
   end
 
 end

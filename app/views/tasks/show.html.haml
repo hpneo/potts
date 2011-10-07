@@ -1,10 +1,15 @@
 %h2
   %a{:href => category_path(@category)}
     =@category.name
-  &raquo; #{@task.title}
+%h3
+  #{@task.title}
 = @task.comments
-%strong Estado:
-- if @task.status==''
-  Nuevo
-- else
-  = Task::STATUS.key(@task.status)
+%h4
+  Estado:
+  - if @task.status==''
+    Nuevo
+  - else
+    = Task::STATUS.key(@task.status)
+.actions
+  %a.btn.primary{:href => edit_category_task_path(@category, @task)} Editar
+  %a.btn.error.disabled Eliminar

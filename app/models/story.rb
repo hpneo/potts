@@ -36,15 +36,16 @@ class Story
 
   def self.create(options)
     client = RestClient::Resource.new("https://www.pivotaltracker.com/services/v3/projects/#{options[:project_id]}/stories", :headers => {'X-TrackerToken' => '3fa226bc048021e8467040561f403381', 'Content-Type' => 'application/xml'})
-    body = build_body(options)
+    body = Story.build_body(options)
     response = client.post "<story>#{body}</story>"
     parse(response)
   end
 
   def update_attributes(options)
     #por ahora, se tiene que pasar el project_id (U)
+    puts self.inspect
     client = RestClient::Resource.new("https://www.pivotaltracker.com/services/v3/projects/#{options[:project_id]}/stories/#{self.id}", :headers => {'X-TrackerToken' => '3fa226bc048021e8467040561f403381', 'Content-Type' => 'application/xml'})
-    body = build_body(options)
+    body = Story.build_body(options)
     response = client.put "<story>#{body}</story>"
     Story.parse(response)
   end
@@ -52,16 +53,16 @@ class Story
   def destroy(options)
     #por ahora, se tiene que pasar el project_id (U)
     client = RestClient::Resource.new("https://www.pivotaltracker.com/services/v3/projects/#{options[:project_id]}/stories/#{self.id}", :headers => {'X-TrackerToken' => '3fa226bc048021e8467040561f403381', 'Content-Type' => 'application/xml'})
-    body = build_body(options)
+    body = Story.build_body(options)
     response = client.delete
     Story.parse(response)
   end
 
   private
-    def build_body(options)
+    def self.build_body(options)
       body = ""
       options.each { |key, value|
-        body << "<#{key}>#{value}</#{key}>"
+        body << "<#{key}>#{value.encode('UTF-8')}</#{key}>"
       }
       body
     end
